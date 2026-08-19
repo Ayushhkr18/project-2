@@ -1,0 +1,27 @@
+# Secrets - the SSH honeypot host key is auto-generated on first run.
+# NEVER commit it; anyone with it could spoof your decoy host.
+host.key
+*.pem
+*.key
+!frontend/**/*.key.svg
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+
+# Env / config
+.env
+.env.*
+
+# OS/editor cruft
+.DS_Store
+.vscode/
+.idea/
+
+# Logs
+*.log

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generative AI Cyber Deception Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo-section">
+            <div class="logo-indicator"></div>
+            <h1>DECEPTION ENGINE v1.0</h1>
+        </div>
+        <div class="control-bar">
+            <button onclick="triggerSimulator()" class="primary">Trigger Attack Simulator</button>
+            <button onclick="restartHoneypot()">Restart SSH Honeypot</button>
+        </div>
+    </header>
+
+    <div class="dashboard-grid">
+        <!-- Sidebar Controls / Lists -->
+        <aside>
+            <div class="panel">
+                <div class="panel-title">Active Decoy Nodes</div>
+                <div class="metric-card" style="margin-bottom: 12px;">
+                    <div class="metric-label">Decoy Hostname</div>
+                    <div class="metric-value" style="font-size: 16px; color: var(--secondary-neon);">staging-node-03.nexus.local</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Decoy IP (Port)</div>
+                    <div class="metric-value" style="font-size: 20px;">0.0.0.0 (2222)</div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-title">Attacker Session List</div>
+                <div class="sessions-list" id="sessionsList">
+                    <!-- Session items will populate dynamically -->
+                    <div style="color: var(--text-muted); text-align: center; padding: 20px;">No active sessions</div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-title">Virtual File System Tree</div>
+                <div class="file-tree-container" id="fileTree">
+                    <!-- File tree will render dynamically -->
+                    <div style="color: var(--text-muted); padding: 10px;">Loading tree...</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main>
+            <!-- Hero Metrics Row -->
+            <div class="metrics-row">
+                <div class="metric-card">
+                    <div class="metric-label">Total Intrusions Captured</div>
+                    <div class="metric-value" id="metricIntrusions">0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Planted Honeytokens</div>
+                    <div class="metric-value" id="metricTokens">0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Attacker Commands Logged</div>
+                    <div class="metric-value" id="metricCommands">0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Believability Score</div>
+                    <div class="metric-value" style="color: var(--accent-neon);">98.4%</div>
+                </div>
+            </div>
+
+            <!-- Terminal Live Feed -->
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <div class="terminal-dot close"></div>
+                        <div class="terminal-dot min"></div>
+                        <div class="terminal-dot max"></div>
+                    </div>
+                    <div class="terminal-title">attacker@staging-node-03:~# - Live Stream</div>
+                    <div></div>
+                </div>
+                <div class="terminal-body" id="terminalFeed">
+                    <div class="terminal-line" style="color: var(--text-muted);">[System] Listening for inbound connections on SSH Port 2222...</div>
+                    <div class="terminal-cursor"></div>
+                </div>
+            </div>
+
+            <!-- MITRE ATT&CK Mapping Grid -->
+            <div class="panel">
+                <div class="panel-title">MITRE ATT&CK Technique Real-time Mapping</div>
+                <div class="mitre-grid">
+                    <div class="mitre-column">
+                        <div class="mitre-column-title">Recon/Discovery</div>
+                        <div class="mitre-cell" id="mitre-T1033">User Discovery (T1033)</div>
+                        <div class="mitre-cell" id="mitre-T1082">System Info (T1082)</div>
+                        <div class="mitre-cell" id="mitre-T1083">File Discovery (T1083)</div>
+                    </div>
+                    <div class="mitre-column">
+                        <div class="mitre-column-title">Execution</div>
+                        <div class="mitre-cell" id="mitre-T1059">Cmd Shell interpreter (T1059)</div>
+                        <div class="mitre-cell" id="mitre-T1059.004">Unix Shell Script (T1059.004)</div>
+                    </div>
+                    <div class="mitre-column">
+                        <div class="mitre-column-title">Credential Access</div>
+                        <div class="mitre-cell" id="mitre-T1003.008">SAM Shadow Read (T1003.008)</div>
+                        <div class="mitre-cell" id="mitre-T1552.001">Credentials in Files (T1552.001)</div>
+                        <div class="mitre-cell" id="mitre-T1552.004">Private Key Leak (T1552.004)</div>
+                    </div>
+                    <div class="mitre-column">
+                        <div class="mitre-column-title">Defense Evasion</div>
+                        <div class="mitre-cell" id="mitre-T1222.002">Perms Modify (T1222.002)</div>
+                    </div>
+                    <div class="mitre-column">
+                        <div class="mitre-column-title">Ingress Transfer</div>
+                        <div class="mitre-cell" id="mitre-T1105">Tool Ingress (T1105)</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

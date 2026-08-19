@@ -1,0 +1,13 @@
+services:
+  deception-engine:
+    build: .
+    container_name: deception-engine
+    ports:
+      - "8000:8000"   # Dashboard + API
+      - "2222:2222"   # Decoy SSH honeypot
+    volumes:
+      - host_key_data:/app/backend   # persists the auto-generated host.key across restarts
+    restart: unless-stopped
+
+volumes:
+  host_key_data:
